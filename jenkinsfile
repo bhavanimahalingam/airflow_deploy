@@ -1,0 +1,13 @@
+node{
+   stage('SCM Checkout'){
+     git 'https://github.com/bhavanimahalingam/airflow_deploy/'
+     }
+   stage('Deploy to airflow'){
+    sshagent(['jenkins_cat']) {
+    sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/airflow_deploy/*.py  ec2-user@174.129.108.233:/home/ec2-user/airflow/dags/'
+    
+    
+     }
+    
+    }
+}  
