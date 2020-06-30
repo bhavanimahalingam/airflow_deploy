@@ -5,12 +5,11 @@ node{
    stage('Deploy to airflow'){
     sshagent(['jenkins_cat']) {
     sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/airflow_bavani/*.py  ec2-user@18.205.106.20:/home/ec2-user/airflow/dags/'
-    sh 'pwd'
-    sh 'whoami'
-
+    sh "pwd"
+    sh "whoami"
     dir("/home/ec2-user/airflow") {
-      sh 'airflow webserver -p 8080 & airflow scheduler && fg'
-      sh 'pwd'
+      sh "airflow webserver -p 8080 & airflow scheduler && fg"
+      sh "pwd"
      }
     }
     }
