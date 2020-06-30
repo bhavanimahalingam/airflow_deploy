@@ -3,7 +3,7 @@ node{
      git 'https://github.com/bhavanimahalingam/airflow_deploy/'
      }
    stage('Deploy to airflow'){
-    sshagent(['jenkins_cat']) {
+    sshagent(['airflow_tom']) {
     sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/airflow_bavani/*.py  ec2-user@18.205.106.20:/home/ec2-user/airflow/dags/'
     sh "pwd"
     sh "whoami"
