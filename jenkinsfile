@@ -7,7 +7,7 @@ node{
     sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/airflow_bavani/*.py  ec2-user@52.5.254.171:/home/ec2-user/airflow/dags/'
     sh "pwd"
     sh "whoami"
-    dir("/home/ec2-user/airflow") {
+    dir("/home/ec2-user/airflow/") {
       sh "airflow webserver -p 8080 & airflow scheduler && fg"
       sh "pwd"
      }
