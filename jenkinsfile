@@ -6,6 +6,7 @@ node{
     
         sshagent(credentials : ['airflow_tom']) {
             sh 'ssh -o StrictHostKeyChecking=no -l ec2-user 18.234.130.66 uname -a'
+            sh 'ls'
             //sh 'ssh ec2-user@ec2-18-234-130-66.compute-1.amazonaws.com'
            // sh 'ssh -o StrictHostKeyChecking=no ec2-user@ec2-18-234-130-66.compute-1.amazonaws.com'
            // sh 'ssh -v ec2-user@ec2-18-234-130-66.compute-1.amazonaws.com'
