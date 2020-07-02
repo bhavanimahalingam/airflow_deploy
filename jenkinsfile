@@ -2,8 +2,15 @@ node{
    stage('SCM Checkout'){
      git 'https://github.com/bhavanimahalingam/airflow_deploy/'
      }
-     stage ('Deploy') {
+     
+     withCredentials([sshUserPrivateKey(credentialsId: "airflow_tom", keyFileVariable: 'jenkins.pem')]) {
+       stage('authentication') {
+        sh 'ssh -o StrictHostKeyChecking=no ec2-user@ec2-18-234-130-66.compute-1.amazonaws.com'
+        sh 'ssh -v ec2-user@ec2-18-234-130-66.compute-1.amazonaws.com'
     
+       }
+       }
+       stage ('Deploy') {
         sshagent(credentials : ['airflow_tom']) {
             //sh 'ssh -A ec2-user@ec2-18-234-130-66.compute-1.amazonaws.com'
             
