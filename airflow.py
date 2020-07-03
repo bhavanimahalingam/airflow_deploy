@@ -11,4 +11,4 @@ dag = DAG('bavani_id', description='Hello world example', schedule_interval='0 1
 dummy_operator = DummyOperator(task_id='dummy_task', retries = 3, dag=dag)
 hello_operator = PythonOperator(task_id='hello_task', python_callable=print_hello, dag=dag)
 dummy01_operator = DummyOperator(task_id='dummy_task_15', retries = 3, dag=dag)
-dummy1_operator >> hello_operator
+dummy01_operator >> hello_operator
